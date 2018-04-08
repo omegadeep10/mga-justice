@@ -2,19 +2,15 @@
   <div class="main-ct">
     <div class="intro">
       <div class="intro-container">
-        <h1>Middle Georgia Justice</h1>
-        <p>We help the citizens of middle georgia access
-          affordable legal assistance. We strive to 
-          reduce the justice gap in middle georgia by
-          connecting middle georgia citizens who need legal
-          assistance with lawyers who will provide legal
-          assistance for <b>free.</b>
+        <h1>Join Middle Georgia Justice</h1>
+        <p>Are you interested in helping the citizens of middle georgia access
+            affordable legal assistance? Fill out the form to the side to 
+            be entered into the system.
         </p>
-        <h2>Need help?</h2>
-        <p>To request free legal assistance, simply
-          fill out the form to the side with your information
-          and one of our lawyers will work with you to
-          resolve your problem.
+        <h2>Verification Process</h2>
+        <p>It may take 24-48 hours to verify your information and enter you into
+            the system. You will be contacted by the administrator once the
+            process has been completed.
         </p>
         <div class="links">
           <a href="">Donations</a>
@@ -23,7 +19,7 @@
           <a href="">About Us</a>
         </div>
         <div class="portals">
-          <router-link to="/lawyer">Lawyer Portal</router-link>
+          <a href="">Lawyer Portal</a>
           <router-link to="/admin">Admin Portal</router-link>
         </div>
         <img src="../assets/newLogo.png" alt="">
@@ -31,7 +27,7 @@
     </div>
     <div class="form">
       <div class="form-container">
-        <h1>Request Free Legal Assistance</h1>
+        <h1>Join MGA Justice</h1>
         <div class="name">
           <div class="form-group">
             <label for="first_name">First Name</label>
@@ -52,10 +48,6 @@
             <input type="tel" name="phone" v-model="form.phone">
           </div>
         </div>
-        <div class="form-group desc">
-          <label for="description">Description</label>
-          <textarea name="description" v-model="form.description" cols="40" rows="10"></textarea>
-        </div>
         <button v-on:click="submitForm" :disabled="loading" class="submit">{{ buttonText }}</button>
       </div>
     </div>
@@ -63,7 +55,7 @@
 </template>
 
 <script>
-import { createTicket } from '../../utils/ticket';
+import { createLawyer } from '../../utils/lawyer';
 
 export default {
   name: 'Home',
@@ -73,8 +65,7 @@ export default {
         first_name: '',
         last_name: '',
         email: '',
-        phone: '',
-        description: ''
+        phone: ''
       },
       loading: false,
       buttonText: 'Submit'
@@ -83,17 +74,19 @@ export default {
   methods: {
     submitForm: function() {
       console.log(JSON.stringify(this.form));
-      createTicket(this.form)
+      this.loading = true;
+      this.buttonText = 'Loading...';
+
+      createLawyer(this.form)
         .then(res => {
           console.log(res);
           this.loading = false;
-          this.buttonText = 'Loading'
-          this.buttonText = 'Your ticket has been submitted!'
+          this.buttonText = 'Your request has been submitted!'
         })
         .catch(err => {
           console.log(err);
           this.loading = false;
-          this.buttonText = 'An unknown error occurred.'
+          this.buttonText = 'Error! (Please refresh and try again)'
         });
     }
   }
