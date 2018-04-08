@@ -2,7 +2,7 @@
   <div class="login-container">
     <div class="v-center-container">
       <div class="header">
-        <h1>Assessments Matrix</h1>
+        <h1>Admin Console</h1>
         <p>Please sign in to continue.</p>
       </div>
 
@@ -34,7 +34,7 @@ export default {
   },
   methods: {
       handleLogin() {
-          this.formError = "";
+          this.formError = "Loading...";
           login(this.email, this.password)
             .then(x => this.$router.push('/'))
             .catch(err => this.formError = err);
@@ -68,7 +68,7 @@ export default {
     font-weight: 700
     text-align: center
     font-size: 18px
-    color: $mga-primary
+    color: $mgj-primary
     margin-top: 30px
   
   p
@@ -76,11 +76,10 @@ export default {
     font-weight: 400
     font-size: 14px
     color: #777
-    margin-top: 5px
+    margin-top: 7px
     text-align: center
 
 form
-  margin-top: 20px
   text-align: center
   padding: 20px
 
@@ -96,22 +95,22 @@ form
     color: #404040
   
   input[type=email]
-    margin-bottom: 5px
+    margin-bottom: 10px
   
   button
     width: 250px
-    border: 1px solid $mga-dark
-    background-color: $mga-primary
+    border: 1px solid $mgj-dark
+    background-color: $mgj-primary
     color: white
     font-family: "Roboto"
     font-size: 14px
     font-weight: 500
     text-align: center
     padding: 10px 15px
-    margin-top: 15px
+    margin-top: 25px
 
     &:hover
-      background-color: $mga-dark
+      background-color: $mgj-dark
       cursor: pointer
     
   .error

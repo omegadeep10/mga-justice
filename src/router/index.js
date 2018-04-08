@@ -11,13 +11,18 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
+      component: Home
+    },
+    {
+      path: '/admin',
+      name: 'Admin',
       beforeEnter: requireAuth,
-      component: Home,
+      component: Home
     },
     {
       path: '/login',
       name: 'Login',
-      component: Login,
+      component: Login
     }
   ],
   //mode: "history"
