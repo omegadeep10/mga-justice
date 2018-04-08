@@ -24,7 +24,7 @@
         </div>
         <div class="portals">
           <a href="">Lawyer Portal</a>
-          <a href="">Admin Portal</a>
+          <router-link to="/admin">Admin Portal</router-link>
         </div>
         <img src="../assets/newLogo.png" alt="">
       </div>

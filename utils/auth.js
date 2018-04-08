@@ -32,7 +32,7 @@ export function login(email, password) {
 
 export function logout() {
     localStorage.removeItem(ID_TOKEN_KEY);
-    router.go('/');
+    //router.go('/');
 }
 
 export function requireAuth(to, from, next) {

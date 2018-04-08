@@ -14,7 +14,7 @@
         <div class="form-group">
           <input type="password" v-model="password" placeholder="Password">
         </div>
-        <button type="submit" v-on:click="handleLogin()">Submit</button>
+        <button type="button" v-on:click="handleLogin()">Submit</button>
       </form>
     </div>
   </div>
@@ -36,7 +36,7 @@ export default {
       handleLogin() {
           this.formError = "Loading...";
           login(this.email, this.password)
-            .then(x => this.$router.push('/'))
+            .then(x => this.$router.push('/admin'))
             .catch(err => this.formError = err);
       }
   }

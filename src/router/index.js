@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Login from '@/components/Login';
 import Home from '@/components/Home';
+import Admin from '@/components/Admin';
 import { requireAuth } from '../../utils/auth';
 
 Vue.use(Router);
@@ -17,7 +18,7 @@ export default new Router({
       path: '/admin',
       name: 'Admin',
       beforeEnter: requireAuth,
-      component: Home
+      component: Admin
     },
     {
       path: '/login',
@@ -25,5 +26,5 @@ export default new Router({
       component: Login
     }
   ],
-  //mode: "history"
+  mode: "history"
 });
